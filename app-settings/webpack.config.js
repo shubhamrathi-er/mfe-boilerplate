@@ -1,13 +1,17 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { ModuleFederationPlugin } from "@module-federation/enhanced";
+const isProd = process.env.NODE_ENV === "production";
+const PUBLIC_URL = isProd
+  ? "https://mfe-settings.vercel.app"
+  : "http://localhost:3002";
 
 export default {
   mode: "development",
   entry: "./src/index.ts",
   output: {
-    publicPath: "http://localhost:3002/",
-    clean: true,
-  },
+  publicPath: `${PUBLIC_URL}/`,
+  clean: true,
+},
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },

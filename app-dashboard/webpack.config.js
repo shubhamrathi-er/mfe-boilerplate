@@ -1,11 +1,14 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { ModuleFederationPlugin } from "@module-federation/enhanced";
-
+const isProd = process.env.NODE_ENV === "production";
+const PUBLIC_URL = isProd
+  ? "https://mfe-dashboard.vercel.app"
+  : "http://localhost:3001";
 export default {
   mode: "development",
   entry: "./src/index.ts",
   output: {
-    publicPath: "http://localhost:3001/",
+    publicPath: `${PUBLIC_URL}/`,
     clean: true,
   },
   resolve: {
@@ -19,28 +22,28 @@ export default {
         exclude: /node_modules/,
       },
       {
-  test: /\.css$/,
-  use: [
-    "style-loader",
-    {
-      loader: "css-loader",
-      options: {
-        importLoaders: 1,
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  ["@tailwindcss/postcss", {}],
+                  ["autoprefixer", {}],
+                ],
+              },
+            },
+          },
+        ],
       },
-    },
-    {
-      loader: "postcss-loader",
-      options: {
-        postcssOptions: {
-          plugins: [
-            ["@tailwindcss/postcss", {}],
-            ["autoprefixer", {}],
-          ],
-        },
-      },
-    },
-  ],
-},
     ],
   },
   plugins: [

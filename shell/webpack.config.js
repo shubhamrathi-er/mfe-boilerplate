@@ -1,5 +1,14 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { ModuleFederationPlugin } from "@module-federation/enhanced";
+const isProd = process.env.NODE_ENV === "production";
+
+const DASHBOARD_URL = isProd
+  ? "https://mfe-dashboard.vercel.app"
+  : "http://localhost:3001";
+
+const SETTINGS_URL = isProd
+  ? "https://mfe-settings.vercel.app"
+  : "http://localhost:3002";
 
 export default {
   mode: "development",
@@ -42,8 +51,8 @@ export default {
     new ModuleFederationPlugin({
       name: "shell",
       remotes: {
-        appDashboard: "appDashboard@http://localhost:3001/remoteEntry.js",
-        appSettings: "appSettings@http://localhost:3002/remoteEntry.js",
+        appDashboard: `appDashboard@${DASHBOARD_URL}/remoteEntry.js`,
+        appSettings: `appSettings@${SETTINGS_URL}/remoteEntry.js`,
       },
       shared: {
         react: { singleton: true, requiredVersion: "^18.0.0" },
