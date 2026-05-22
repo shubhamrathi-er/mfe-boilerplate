@@ -2,18 +2,17 @@
   "name": "shell",
   "version": "1.0.0",
   "main": "index.js",
- 
   "scripts": {
     "start": "webpack serve --mode development",
     "build": "webpack --mode production"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "@module-federation/enhanced": "^2.4.0",
+    "framer-motion": "^12.40.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.15.1"

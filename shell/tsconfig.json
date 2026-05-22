@@ -8,11 +8,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "rootDir": "./src",
-    "outDir": "./dist",
-    "ignoreDeprecations": "5.0",
-    "paths": {
-      "shared/*": ["../shared/src/*"]
-    }
+    "outDir": "./dist"
   },
   "include": ["src"]
 }

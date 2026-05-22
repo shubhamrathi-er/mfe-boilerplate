@@ -1,10 +1,7 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { ModuleFederationPlugin } from "@module-federation/enhanced";
-import path from "path";
-import "webpack-dev-server";
-import type { Configuration } from "webpack";
 
-const config: Configuration = {
+export default {
   mode: "development",
   entry: "./src/index.ts",
   output: {
@@ -23,7 +20,21 @@ const config: Configuration = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: {
+                  "@tailwindcss/postcss": {},
+                  autoprefixer: {},
+                },
+              },
+            },
+          },
+        ],
       },
     ],
   },
@@ -31,8 +42,6 @@ const config: Configuration = {
     new ModuleFederationPlugin({
       name: "shell",
       remotes: {
-        // These point to local ports in development
-        // Will point to Vercel URLs in production
         appDashboard: "appDashboard@http://localhost:3001/remoteEntry.js",
         appSettings: "appSettings@http://localhost:3002/remoteEntry.js",
       },
@@ -54,5 +63,3 @@ const config: Configuration = {
     },
   },
 };
-
-export default config;
