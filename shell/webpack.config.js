@@ -14,7 +14,9 @@ export default {
   mode: "development",
   entry: "./src/index.ts",
   output: {
-    publicPath: "http://localhost:3000/",
+    publicPath: isProd
+      ? "https://mfe-shell-lilac.vercel.app/"
+      : "http://localhost:3000/",
     clean: true,
   },
   resolve: {

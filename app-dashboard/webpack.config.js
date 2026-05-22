@@ -2,7 +2,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import { ModuleFederationPlugin } from "@module-federation/enhanced";
 const isProd = process.env.NODE_ENV === "production";
 const PUBLIC_URL = isProd
-  ? "https://mfe-dashboard.vercel.app"
+  ? "https://mfe-dashboard-tan.vercel.app"
   : "http://localhost:3001";
 export default {
   mode: "development",
