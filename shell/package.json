@@ -6,19 +6,21 @@
     "start": "webpack serve --mode development",
     "build": "webpack --mode production"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "@module-federation/enhanced": "^2.4.0",
+    "antd": "^6.4.3",
     "framer-motion": "^12.40.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "react-router-dom": "^7.15.1",
-    "antd": "^6.4.3"
+    "react-router-dom": "^7.15.1"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.5.0",

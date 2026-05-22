@@ -10,9 +10,6 @@ jobs:
   shell:
     name: Shell App
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: shell
     steps:
       - uses: actions/checkout@v4
 
@@ -21,21 +18,24 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
+      - name: Install root dependencies
         run: npm install
 
-      - name: Type check
+      - name: Install shell dependencies
+        working-directory: shell
+        run: npm install
+
+      - name: Type check shell
+        working-directory: shell
         run: npx tsc --noEmit
 
-      - name: Build
+      - name: Build shell
+        working-directory: shell
         run: npm run build
 
   app-dashboard:
     name: Dashboard App
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: app-dashboard
     steps:
       - uses: actions/checkout@v4
 
@@ -44,21 +44,24 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
+      - name: Install root dependencies
         run: npm install
 
-      - name: Type check
+      - name: Install dashboard dependencies
+        working-directory: app-dashboard
+        run: npm install
+
+      - name: Type check dashboard
+        working-directory: app-dashboard
         run: npx tsc --noEmit
 
-      - name: Build
+      - name: Build dashboard
+        working-directory: app-dashboard
         run: npm run build
 
   app-settings:
     name: Settings App
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: app-settings
     steps:
       - uses: actions/checkout@v4
 
@@ -67,11 +70,17 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
+      - name: Install root dependencies
         run: npm install
 
-      - name: Type check
+      - name: Install settings dependencies
+        working-directory: app-settings
+        run: npm install
+
+      - name: Type check settings
+        working-directory: app-settings
         run: npx tsc --noEmit
 
-      - name: Build
+      - name: Build settings
+        working-directory: app-settings
         run: npm run build
