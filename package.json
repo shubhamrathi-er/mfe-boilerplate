@@ -14,6 +14,7 @@
     "start:all": "concurrently \"npm run shell\" \"npm run dashboard\" \"npm run settings\"",
     "build:all": "npm run build --workspace=shell && npm run build --workspace=app-dashboard && npm run build --workspace=app-settings"
   },
+  "type": "module",
   "devDependencies": {
     "concurrently": "^8.2.2"
   }
