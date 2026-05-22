@@ -1,9 +1,7 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { ModuleFederationPlugin } from "@module-federation/enhanced";
-import "webpack-dev-server";
-import type { Configuration } from "webpack";
 
-const config: Configuration = {
+export default {
   mode: "development",
   entry: "./src/index.ts",
   output: {
@@ -22,7 +20,21 @@ const config: Configuration = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"],
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: {
+                  "@tailwindcss/postcss": {},
+                  autoprefixer: {},
+                },
+              },
+            },
+          },
+        ],
       },
     ],
   },
@@ -51,5 +63,3 @@ const config: Configuration = {
     },
   },
 };
-
-export default config;
