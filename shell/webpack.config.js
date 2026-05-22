@@ -3,11 +3,11 @@ import { ModuleFederationPlugin } from "@module-federation/enhanced";
 const isProd = process.env.NODE_ENV === "production";
 
 const DASHBOARD_URL = isProd
-  ? "https://mfe-dashboard.vercel.app"
+  ? "https://mfe-dashboard-tan.vercel.app/ "
   : "http://localhost:3001";
 
 const SETTINGS_URL = isProd
-  ? "https://mfe-settings.vercel.app"
+  ? "https://mfe-settings-iota.vercel.app/"
   : "http://localhost:3002";
 
 export default {
