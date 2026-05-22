@@ -1,11 +1,13 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { ModuleFederationPlugin } from "@module-federation/enhanced";
+
 const isProd = process.env.NODE_ENV === "production";
 const PUBLIC_URL = isProd
   ? "https://mfe-dashboard-tan.vercel.app"
   : "http://localhost:3001";
+
 export default {
-  mode: "development",
+  mode: isProd ? "production" : "development",
   entry: "./src/index.ts",
   output: {
     publicPath: `${PUBLIC_URL}/`,
@@ -27,9 +29,7 @@ export default {
           "style-loader",
           {
             loader: "css-loader",
-            options: {
-              importLoaders: 1,
-            },
+            options: { importLoaders: 1 },
           },
           {
             loader: "postcss-loader",

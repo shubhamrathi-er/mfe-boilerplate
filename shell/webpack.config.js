@@ -1,17 +1,18 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { ModuleFederationPlugin } from "@module-federation/enhanced";
+
 const isProd = process.env.NODE_ENV === "production";
 
 const DASHBOARD_URL = isProd
-  ? "https://mfe-dashboard-tan.vercel.app/ "
+  ? "https://mfe-dashboard-tan.vercel.app"
   : "http://localhost:3001";
 
 const SETTINGS_URL = isProd
-  ? "https://mfe-settings-iota.vercel.app/"
+  ? "https://mfe-settings-iota.vercel.app"
   : "http://localhost:3002";
 
 export default {
-  mode: "development",
+  mode: isProd ? "production" : "development",
   entry: "./src/index.ts",
   output: {
     publicPath: isProd
