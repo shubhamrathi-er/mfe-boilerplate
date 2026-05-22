@@ -1,7 +1,7 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { ModuleFederationPlugin } from "@module-federation/enhanced";
 
-const isProd = process.env.NODE_ENV === "production";
+const isProd = !!process.env.VERCEL_URL;
 const PUBLIC_URL = isProd
   ? "https://mfe-settings-iota.vercel.app"
   : "http://localhost:3002";
