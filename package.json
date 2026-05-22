@@ -1,0 +1,20 @@
+{
+  "name": "mfe-boilerplate",
+  "private": true,
+  "workspaces": [
+    "shell",
+    "app-dashboard",
+    "app-settings",
+    "shared"
+  ],
+  "scripts": {
+    "shell": "npm run start --workspace=shell",
+    "dashboard": "npm run start --workspace=app-dashboard",
+    "settings": "npm run start --workspace=app-settings",
+    "start:all": "concurrently \"npm run shell\" \"npm run dashboard\" \"npm run settings\"",
+    "build:all": "npm run build --workspace=shell && npm run build --workspace=app-dashboard && npm run build --workspace=app-settings"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
