@@ -8,11 +8,15 @@ A production-ready **Micro-Frontend Architecture** starter kit built with **Webp
 
 | App | URL |
 |-----|-----|
-| Shell | Coming soon |
-| Dashboard | Coming soon |
-| Settings | Coming soon |
+| Shell | https://mfe-shell-lilac.vercel.app |
+| Dashboard | https://mfe-dashboard-tan.vercel.app |
+| Settings | https://mfe-settings-iota.vercel.app |
 
 ---
+
+## Preview
+
+![MFE Boilerplate Dashboard](./screenshot.png)
 
 ## Architecture Overview
 
